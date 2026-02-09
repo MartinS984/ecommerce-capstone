@@ -1,0 +1,49 @@
+name: Product Service CI
+
+on:
+  push:
+    paths:
+      - 'src/product-service/**'
+  pull_request:
+    paths:
+      - 'src/product-service/**'
+
+jobs:
+  lint:
+    name: Lint Python Code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: src/product-service/requirements.txt
+
+      - name: Install Linting Tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8
+
+      - name: Run Flake8
+        working-directory: src/product-service
+        # stop the build if there are Python syntax errors or undefined names
+        run: |
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          # exit-zero treats all errors as warnings for now so the build continues
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+  build:
+    name: Build Product Image
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: |
+          docker build -t product-service:${{ github.sha }} -f src/product-service/Dockerfile src/product-service/
