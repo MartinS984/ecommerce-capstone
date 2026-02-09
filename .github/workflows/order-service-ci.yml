@@ -49,4 +49,4 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t order-service:${{ github.sha }} src/order-service/
+          docker build -t order-service:${{ github.sha }} -f src/order-service/Dockerfile src/order-service/
