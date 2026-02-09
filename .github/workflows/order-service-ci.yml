@@ -3,7 +3,7 @@ name: Order Service CI
 on:
   push:
     paths:
-      - 'src/order-service/**' # Only trigger if files in this folder change
+      - 'src/order-service/**'
   pull_request:
     paths:
       - 'src/order-service/**'
@@ -19,11 +19,14 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: '1.23'
+          # Tell GitHub where to find the dependency file for caching
+          cache-dependency-path: src/order-service/go.sum
 
       - name: Build Order Service
+        # Tell the runner to execute these commands INSIDE the service folder
+        working-directory: src/order-service
         run: |
-          cd src/order-service
-          go build -v ./...
+          go build -v .
 
       - name: Build Docker Image
         run: |
