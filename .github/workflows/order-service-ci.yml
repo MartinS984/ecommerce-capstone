@@ -1,33 +1,25 @@
 name: Order Service CI
 
 on:
-  push:
-    paths:
-      - 'src/order-service/**'
-  pull_request:
-    paths:
-      - 'src/order-service/**'
+push:
+paths:
+- 'src/order-service/'
+pull_request:
+paths:
+- 'src/order-service/'
 
 jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+lint:
+name: Lint Code
+runs-on: ubuntu-latest
+steps:
+- name: Checkout Code
+uses: actions/checkout@v4
 
-      - name: Set up Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: '1.23'
-          # Tell GitHub where to find the dependency file for caching
-          cache-dependency-path: src/order-service/go.sum
-
-      - name: Build Order Service
-        # Tell the runner to execute these commands INSIDE the service folder
-        working-directory: src/order-service
-        run: |
-          go build -v .
-
-      - name: Build Docker Image
-        run: |
-          docker build -t order-service:${{ github.sha }} src/order-service/
+build-and-test:
+name: Build and Test
+needs: lint
+runs-on: ubuntu-latest
+steps:
+- name: Checkout Code
+uses: actions/checkout@v4
