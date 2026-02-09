@@ -1,0 +1,30 @@
+name: Order Service CI
+
+on:
+  push:
+    paths:
+      - 'src/order-service/**' # Only trigger if files in this folder change
+  pull_request:
+    paths:
+      - 'src/order-service/**'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+
+      - name: Build Order Service
+        run: |
+          cd src/order-service
+          go build -v ./...
+
+      - name: Build Docker Image
+        run: |
+          docker build -t order-service:${{ github.sha }} src/order-service/
