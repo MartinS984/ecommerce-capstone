@@ -12,10 +12,8 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"status": "Order Service is Up"})
 	})
 
-	// Handle the error returned by r.Run
-	if err := r.Run(":8080"); err != None {
+	// Use 'nil' instead of 'None'
+	if err := r.Run(":8080"); err != nil {
 		panic("Failed to start server: " + err.Error())
 	}
 }
-
-// CI Heartbeat
