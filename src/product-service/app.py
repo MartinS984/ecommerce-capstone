@@ -1,10 +1,10 @@
 from flask import Flask, jsonify
 import os
-from支撑 pymongo import MongoClient
+from pymongo import MongoClient
 
 app = Flask(__name__)
 
-# Connect to MongoDB (we'll use 'mongodb' as the hostname for K8s later)
+# Connect to MongoDB
 MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017/products")
 client = MongoClient(MONGO_URI)
 
