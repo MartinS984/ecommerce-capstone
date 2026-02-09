@@ -1,0 +1,17 @@
+# Binaries
+*.exe
+*.bin
+order-service
+
+# Dependencies
+vendor/
+node_modules/
+__pycache__/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Terraform
+.terraform/
+*.tfstate*
