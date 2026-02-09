@@ -1,7 +1,6 @@
 # Binaries
 *.exe
 *.bin
-order-service
 
 # Dependencies
 vendor/
