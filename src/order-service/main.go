@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -12,6 +13,3 @@ func main() {
 	})
 	r.Run(":8080")
 }
-
-# Just adding a comment to trigger CI
-echo "// Triggering CI build" >> src/order-service/main.go
