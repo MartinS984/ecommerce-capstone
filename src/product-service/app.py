@@ -14,10 +14,12 @@ def health():
 
 @app.route('/products')
 def get_products():
-    return jsonify([
+    # Example data
+    products = [
         {"id": 1, "name": "DevOps Handbook", "price": 29.99},
         {"id": 2, "name": "Kubernetes in Action", "price": 39.99}
-    ])
+    ]
+    return jsonify(products)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
