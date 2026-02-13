@@ -10,11 +10,11 @@ To build a scalable, production-grade microservices infrastructure using DevOps 
 - **Observability:** Prometheus, Grafana, ELK Stack
 
 ## Service Matrix
-| Service | Language | Port | Database | CI Status |
+| Service | Language | Local Port | Database | CI Status |
 | :--- | :--- | :--- | :--- | :--- |
 | **Order** | Go (Gin) | 8080 | - | ✅ Lint & Build |
-| **Product** | Python (Flask) | 5000 | MongoDB | ✅ Flake8 & Build |
-| **Cart** | Node.js (Express) | 3000 | Redis | ✅ Audit & Build |
+| **Product** | Python (Flask) | 8081 | MongoDB | ✅ Flake8 & Build |
+| **Cart** | Node.js (Express) | 8082 | Redis | ✅ Audit & Build |
 
 ## Progress Tracking
 - [x] **Phase 1: Foundation**
@@ -24,11 +24,12 @@ To build a scalable, production-grade microservices infrastructure using DevOps 
 - [x] **Phase 2: Service Expansion & CI**
     - [x] Product Service Setup (Python/Flask)
     - [x] Cart Service Setup (Node.js/Express)
-    - [x] **Monorepo CI Pipelines:** Implemented GitHub Actions with path filtering, linting, and security audits.
-- [ ] **Phase 3: Kubernetes Orchestration (Local)**
-    - [ ] Minikube Cluster Setup
-    - [ ] K8s Manifests (Deployments & Services)
-    - [ ] Inter-service Communication
+    - [x] Monorepo CI Pipelines
+- [x] **Phase 3: Kubernetes Orchestration (Local)**
+    - [x] Minikube Cluster Setup
+    - [x] K8s Manifests (Deployments & Services)
+    - [x] Local Connectivity (Tunneling & Port Forwarding)
 - [ ] **Phase 4: AWS Cloud Infrastructure**
     - [ ] Terraform State Management
     - [ ] EKS Cluster Provisioning
+    - [ ] VPC & Networking
