@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-service
+  template:
+    metadata:
+      labels:
+        app: order-service
+    spec:
+      containers:
+        - name: order-service
+          image: 637423276119.dkr.ecr.us-east-1.amazonaws.com/order-service:latest
+          imagePullPolicy: Always # Critical: Forces K8s to use the local image we just built
+          ports:
+            - containerPort: 8080
+          env:
+            - name: GIN_MODE
+              value: "release"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+spec:
+  selector:
+    app: order-service
+  type: LoadBalancer # Exposes the service outside the cluster
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
