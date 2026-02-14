@@ -48,8 +48,8 @@ spec:
     spec:
       containers:
         - name: product-service
-          image: 637423276119.dkr.ecr.us-east-1.amazonaws.com/product-service:latest
-          imagePullPolicy: Always
+          image: product-service:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 5000
           env:

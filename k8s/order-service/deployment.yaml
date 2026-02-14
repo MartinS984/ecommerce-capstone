@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: order-service
-          image: 637423276119.dkr.ecr.us-east-1.amazonaws.com/order-service:latest
-          imagePullPolicy: Always # Critical: Forces K8s to use the local image we just built
+          image: order-service:latest
+          imagePullPolicy: Never # Critical: Forces K8s to use the local image we just built
           ports:
             - containerPort: 8080
           env:

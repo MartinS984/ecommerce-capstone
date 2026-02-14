@@ -49,8 +49,8 @@ spec:
     spec:
       containers:
         - name: cart-service
-          image: 637423276119.dkr.ecr.us-east-1.amazonaws.com/cart-service:latest
-          imagePullPolicy: Always
+          image: cart-service:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 3000
           env:
