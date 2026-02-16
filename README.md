@@ -28,4 +28,4 @@ To build a scalable, production-grade microservices infrastructure using DevOps 
     - [x] Install & Configure ArgoCD
     - [x] Implement Declarative GitOps Workflow (Local Sync)
     - [x] Prometheus & Grafana Monitoring
-    - [ ] ELK Stack Logging
+    - [x] Loki & Promtail Logging
