@@ -9,6 +9,10 @@ spec:
       app: order-service
   template:
     metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics" # Ensure your app has a /metrics endpoint
+        prometheus.io/port: "8080"
       labels:
         app: order-service
     spec:

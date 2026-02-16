@@ -43,6 +43,10 @@ spec:
       app: product-service
   template:
     metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics" # Ensure your app has a /metrics endpoint
+        prometheus.io/port: "8081"
       labels:
         app: product-service
     spec:

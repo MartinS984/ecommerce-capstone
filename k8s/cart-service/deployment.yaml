@@ -10,6 +10,10 @@ spec:
       app: redis
   template:
     metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics" # Ensure your app has a /metrics endpoint
+        prometheus.io/port: "8082"
       labels:
         app: redis
     spec:
