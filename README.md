@@ -27,5 +27,5 @@ To build a scalable, production-grade microservices infrastructure using DevOps 
 - [x] **Phase 5: GitOps & Observability**
     - [x] Install & Configure ArgoCD
     - [x] Implement Declarative GitOps Workflow (Local Sync)
-    - [ ] Prometheus & Grafana Monitoring
+    - [x] Prometheus & Grafana Monitoring
     - [ ] ELK Stack Logging
